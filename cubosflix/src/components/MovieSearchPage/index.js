@@ -1,17 +1,23 @@
-import React, { useState } from "react"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import { getOrSearchMovies } from "../../functions/getOrSearchMovies"
 import { useForm } from "../../hooks/useForm"
 import { useRequestData } from "../../hooks/useRequestData"
 
 
 const MovieSearchPage = () => {
+    const [movieList, setMovieList ] = useState(undefined)
     const {form, onChange} = useForm({
         movieName: "",
         genre: ""
     })
 
-    const ratedMovies = useRequestData("https://api.themoviedb.org/3/movie/top_rated?api_key=883ee274b7ce2d49978875c3d25de159&page=1", {})
+    useEffect(() => {
+        getOrSearchMovies(form.movieName).then(response => {
+            setMovieList(response)
+        })
 
-    console.log(ratedMovies.results)
+    }, [form.movieName])
 
     return (
         <div>
@@ -22,6 +28,9 @@ const MovieSearchPage = () => {
                     <option value="Terror">Terror</option>
                 </select>
             </form>
+            {movieList && movieList.map(movie => {
+                return <p>{movie.title}</p>
+            })}
         </div>
     )
 }
