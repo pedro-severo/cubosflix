@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getOrSearchMovies } from "../../functions/getOrSearchMovies"
+import { getOrSearchMoviesByNameOrGenre } from "../../functions/getOrSearchMoviesByNameOrGenre"
 import { useForm } from "../../hooks/useForm"
 import GenreListOptions from "../GenreListOptions"
 import MovieCard from "../MovieCard"
@@ -13,27 +13,13 @@ const MovieSearchPage = () => {
     })
 
     useEffect(() => {
-        getOrSearchMovies(form.movieName).then(response => {
+        const { movieName, genre } = form
+
+        getOrSearchMoviesByNameOrGenre(movieName, genre).then(response => {
             setMovieList(response)
         })
 
-    }, [form.movieName])
-
-
-    // TODO: Filtrar por genero de forma independente da filtragem por nome
-    // useEffect(() => {
-    //     if(form.genre) {
-    //         const filteredMovieList = movieList.filter(movie => {
-    //             for (let id of movie.genre_ids) {
-    //                 if (id === form.genre) {
-    //                     return true
-    //                 }
-    //             }
-    //         })
-
-    //         setMovieList(filteredMovieList)
-    //     }
-    // }, [form.genre])
+    }, [form.movieName, form.genre])
 
     return (
         <div>
