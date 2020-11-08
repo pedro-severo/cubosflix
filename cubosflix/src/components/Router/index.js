@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import MovieCard from "../MovieCard"
 import MovieDetailPage from "../MovieDetailPage"
 import MovieSearchPage from "../MovieSearchPage"
 
@@ -13,6 +14,9 @@ const Router = () => {
                 </Route>
                 <Route exact path="/movie-detail">
                     <MovieDetailPage />
+                </Route>
+                <Route exact path="/teste">
+                    <MovieCard />
                 </Route>
             </Switch>
         </BrowserRouter>

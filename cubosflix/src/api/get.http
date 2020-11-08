@@ -10,7 +10,7 @@ GET https://api.themoviedb.org/3/search/movie?api_key=883ee274b7ce2d49978875c3d2
 GET https://api.themoviedb.org/3/movie/448368?api_key=883ee274b7ce2d49978875c3d25de159
 
 ### 
-# Get Movie Genre List
+# Get Genre List
 GET https://api.themoviedb.org/3/genre/movie/list?api_key=883ee274b7ce2d49978875c3d25de159
 
 ### 

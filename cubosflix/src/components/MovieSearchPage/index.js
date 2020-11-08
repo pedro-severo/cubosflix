@@ -1,8 +1,8 @@
-import axios from "axios"
 import React, { useEffect, useState } from "react"
 import { getOrSearchMovies } from "../../functions/getOrSearchMovies"
 import { useForm } from "../../hooks/useForm"
-import { useRequestData } from "../../hooks/useRequestData"
+import GenreListOptions from "../GenreListOptions"
+import MovieCard from "../MovieCard"
 
 
 const MovieSearchPage = () => {
@@ -19,17 +19,33 @@ const MovieSearchPage = () => {
 
     }, [form.movieName])
 
+
+    // TODO: Filtrar por genero de forma independente da filtragem por nome
+    // useEffect(() => {
+    //     if(form.genre) {
+    //         const filteredMovieList = movieList.filter(movie => {
+    //             for (let id of movie.genre_ids) {
+    //                 if (id === form.genre) {
+    //                     return true
+    //                 }
+    //             }
+    //         })
+
+    //         setMovieList(filteredMovieList)
+    //     }
+    // }, [form.genre])
+
     return (
         <div>
             <form>
                 <input name="movieName" value={form.movieName} onChange={onChange} />
-                <select name="genre" value={form.genre} onChange={onChange} >
-                    <option value=""></option>
-                    <option value="Terror">Terror</option>
-                </select>
+                <GenreListOptions 
+                    form={form}
+                    onChange={onChange}
+                />
             </form>
             {movieList && movieList.map(movie => {
-                return <p>{movie.title}</p>
+                return <MovieCard key={movie.id} movieInfos={movie}/>
             })}
         </div>
     )
