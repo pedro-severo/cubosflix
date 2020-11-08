@@ -11,9 +11,9 @@ import { MovieCardContainer, ImageContainer, MovieInfosContainer,
 // TODO: 
 // 1 - CSS: esconder linhas dos textos de descricao dos filmes
 
-function MovieCard({movieInfos}) {
+function MovieCard({movieInfos, handleMovieCardClick}) {
     return (
-        <MovieCardContainer>
+        <MovieCardContainer onClick={() => handleMovieCardClick(movieInfos.id)} >
             <ImageContainer src={`${BASE_IMAGE_PATH}/${movieInfos.poster_path}`}  />
             <MovieInfosContainer>
                 <TitleContainer >

@@ -10,7 +10,7 @@ export const useRequestData = (url, initialState) => {
         }).catch(err => {
             console.log(err.message);
         })    
-    }, [url]);
+    }, []);
 
     return data;   
 };

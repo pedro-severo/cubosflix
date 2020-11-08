@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { getOrSearchMoviesByNameOrGenre } from "../../functions/getOrSearchMoviesByNameOrGenre"
 import { useForm } from "../../hooks/useForm"
 import GenreListOptions from "../GenreListOptions"
 import MovieCard from "../MovieCard"
+import { goToMovieDetailPage } from "../Router/routeActions"
 
 
 const MovieSearchPage = () => {
-    const [movieList, setMovieList ] = useState(undefined)
+    const history = useHistory()
+    const [movieList, setMovieList ] = useState(null)
     const {form, onChange} = useForm({
         movieName: "",
         genre: ""
@@ -19,7 +22,11 @@ const MovieSearchPage = () => {
             setMovieList(response)
         })
 
-    }, [form.movieName, form.genre])
+    }, [form.movieName, form.genre]);
+
+    const handleMovieCardClick = (movieId) => {
+        goToMovieDetailPage(history, movieId)
+    }
 
     return (
         <div>
@@ -31,7 +38,11 @@ const MovieSearchPage = () => {
                 />
             </form>
             {movieList && movieList.map(movie => {
-                return <MovieCard key={movie.id} movieInfos={movie}/>
+                return <MovieCard 
+                    key={movie.id} 
+                    movieInfos={movie}
+                    handleMovieCardClick={handleMovieCardClick}
+                />
             })}
         </div>
     )

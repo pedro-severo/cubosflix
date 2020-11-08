@@ -12,7 +12,7 @@ const Router = () => {
                 <Route exact path="/">
                     <MovieSearchPage />
                 </Route>
-                <Route exact path="/movie-detail">
+                <Route exact path="/movie-detail/:movieId">
                     <MovieDetailPage />
                 </Route>
                 <Route exact path="/teste">
