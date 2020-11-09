@@ -32,6 +32,13 @@ export const SynopsisContainer = styled.div`
     padding: 0 5%;
 `
 
+export const SynopsisText = styled.p`
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+`
+
 export const StyledLine = styled.hr`
     border-color: #292961;
 `

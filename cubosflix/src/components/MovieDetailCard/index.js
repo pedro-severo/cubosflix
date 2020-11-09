@@ -5,7 +5,7 @@ import InfoWrapper from "./InfoWrapper"
 import { 
     CardBodyContainer, CardHeaderContainer, CardImageContainer, 
     CardInfosContainer, InfosContainer, InfoWrapperFlex, MovieDetailCardContainer, 
-    StyledLine, SynopsisContainer, VoteAverageContainer 
+    StyledLine, SynopsisContainer, SynopsisText, VoteAverageContainer 
 } from "./styles"
 
 
@@ -23,7 +23,7 @@ const MovieDetailCard = ({movieDetails}) => {
                     <SynopsisContainer>
                         <strong>Synopsys</strong>
                         <StyledLine />
-                        <p>{movieDetails.overview}</p>
+                        <SynopsisText>{movieDetails.overview}</SynopsisText>
                     </SynopsisContainer>
                     <InfosContainer>
                         <strong>Infos</strong>
