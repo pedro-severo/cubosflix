@@ -5,6 +5,7 @@ import { useForm } from "../../hooks/useForm"
 import GenreListOptions from "../GenreListOptions"
 import MovieCard from "../MovieCard"
 import { goToMovieDetailPage } from "../Router/routeActions"
+import { FormContainer } from "./styles"
 
 
 const MovieSearchPage = () => {
@@ -30,13 +31,13 @@ const MovieSearchPage = () => {
 
     return (
         <div>
-            <form>
-                <input name="movieName" value={form.movieName} onChange={onChange} />
+            <FormContainer>
+                <input name="movieName" value={form.movieName} onChange={onChange} placeholder="Search by name" />
                 <GenreListOptions 
                     form={form}
                     onChange={onChange}
                 />
-            </form>
+            </FormContainer>
             {movieList && movieList.map(movie => {
                 return <MovieCard 
                     key={movie.id} 

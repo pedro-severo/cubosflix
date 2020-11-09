@@ -5,11 +5,9 @@ import { BASE_IMAGE_PATH } from "../../constants"
 import MovieGenreTopics from "../MovieGenreTopics"
 
 import { MovieCardContainer, ImageContainer, MovieInfosContainer, 
-    TitleContainer, ReleaseDateContainer, VoteAverageContainer, OverviewContainer
+    TitleContainer, ReleaseDateContainer, VoteAverageContainer, 
+    OverviewContainer, TitleText
 } from "./styles"
-
-// TODO: 
-// 1 - CSS: esconder linhas dos textos de descricao dos filmes
 
 function MovieCard({movieInfos, handleMovieCardClick}) {
     return (
@@ -17,14 +15,14 @@ function MovieCard({movieInfos, handleMovieCardClick}) {
             <ImageContainer src={`${BASE_IMAGE_PATH}/${movieInfos.poster_path}`}  />
             <MovieInfosContainer>
                 <TitleContainer >
-                    <h4>{movieInfos.original_title}</h4>
+                    <TitleText>{movieInfos.original_title}</TitleText>
                 </TitleContainer>
                 <div>
                     <ReleaseDateContainer>
                         <p>{movieInfos.release_date}</p>
                     </ReleaseDateContainer>  
                     <OverviewContainer>{movieInfos.overview}</OverviewContainer>
-                    <MovieGenreTopics genreIds={movieInfos.genre_ids} />    
+                    <MovieGenreTopics genreIds={movieInfos.genre_ids} marginLeft={"2vw"}/>    
                 </div>
                 <VoteAverageContainer>{movieInfos.vote_average}</VoteAverageContainer>      
             </MovieInfosContainer>

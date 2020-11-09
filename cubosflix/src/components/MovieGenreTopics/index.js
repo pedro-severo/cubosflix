@@ -4,24 +4,26 @@ import {GenreListContainer, GenreItem } from "./styles"
 
 import { getGenreList } from "../../functions/getGenreList"
 
-function MovieGenreTopics({genreIds}) {
+function MovieGenreTopics({genreIds, marginLeft}) {
     const [genreList, setGenreList] = useState(undefined)
 
     useEffect(() => {
         getGenreList().then(response => {
             setGenreList(response)
         })
-    })
+    }, [setGenreList, getGenreList])
+
     return (
-        <GenreListContainer>
+        <GenreListContainer marginLeft={marginLeft} >
             {genreList && genreList.filter(genre => {
                 for (let id of genreIds) {
+                    
                     if (id === genre.id) {
                         return true
                     } 
                 }
-            }).map(movie => {
-                return <GenreItem key={movie.id}>{movie.name}</GenreItem>
+            }).map(genre => {
+                return <GenreItem key={genre.id}>{genre.name}</GenreItem>
             })}
         </GenreListContainer>
     )

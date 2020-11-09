@@ -12,7 +12,7 @@ function GenreListOptions({form, onChange}) {
  
     return (
         <select name="genre" value={form.genre} onChange={onChange} >
-            <option value=""></option>
+            <option value="">Filter by genre</option>
             {genreList && genreList.map(genre => {
                 return <option key={genre.id} value={genre.id}>{genre.name}</option>
             })}
