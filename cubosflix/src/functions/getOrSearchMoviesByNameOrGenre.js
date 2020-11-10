@@ -1,13 +1,13 @@
 import axios from "axios"
 import { API_KEY, BASE_URL } from "../constants"
 
-export const getOrSearchMoviesByNameOrGenre = async (movieName, genre) => {
+export const getOrSearchMoviesByNameOrGenre = async (movieName, genre, apiPage, indexToRenderMovieList) => {
 
     try {
         const url = movieName ? (
             `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieName}`
         ) : (
-            `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=1`
+            `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${apiPage}`
         )
 
         const response = await axios.get(url)
@@ -22,7 +22,13 @@ export const getOrSearchMoviesByNameOrGenre = async (movieName, genre) => {
             })
         ) : (response.data.results)
 
-        return responseFilteredByGenre
+        const pagedResponse = responseFilteredByGenre.filter((movie, index) => {
+            if (index >= indexToRenderMovieList && index < (indexToRenderMovieList + 5)) {
+                return true
+            }
+        })
+
+        return pagedResponse
     
     } catch (error) {
         console.log(error)
