@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const MovieSearchPageContainer = styled.div`
-    height: 144vh;
+    height: 105vh;
     display: flex;
     flex-direction: column;
 `

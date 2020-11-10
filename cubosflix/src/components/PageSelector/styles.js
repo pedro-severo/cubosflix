@@ -4,7 +4,7 @@ export const PageSelectorContainer = styled.footer`
     position: fixed;
     width: 100%;
     height: 8vh;
-    top: 53.5vh;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
