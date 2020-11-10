@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const MovieCardContainer = styled.div`
     height: 16vh;
-    margin: 10%;
+    margin: 2vh 10% 0;
     display: flex;
     justify-content: center;
 `

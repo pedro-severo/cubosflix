@@ -22,8 +22,10 @@ function MovieGenreTopics({genreIds, marginLeft}) {
                         return true
                     } 
                 }
-            }).map(genre => {
-                return <GenreItem key={genre.id}>{genre.name}</GenreItem>
+            }).map((genre, index) => {
+                if (index < 5) {
+                    return <GenreItem key={genre.id}>{genre.name}</GenreItem>
+                }
             })}
         </GenreListContainer>
     )
